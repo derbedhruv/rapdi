@@ -86,9 +86,13 @@ rapd_notes = get(handles.edit4, 'String');
 
 %% Add to workspace
 assignin('base', 'first_name', first_name);
+assignin('base', 'last_name', last_name);
 assignin('base', 'age', age);
 assignin('base', 'gender', gender);
 assignin('base', 'rapd_notes', rapd_notes);
+
+%% close the ui
+close all;
 
 
 
