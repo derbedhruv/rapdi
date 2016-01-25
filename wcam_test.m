@@ -10,6 +10,8 @@ threshold_dark = 0.8;
 threshold_bright = 0.87;
 
 h = rapdi_gui;
+uiwait(h); 
+data = guidata(h);
 
 % setup webcams using the object that was made using the image acquisition
 % toolbox. We will set trigger to manual so that we can call frames as they
