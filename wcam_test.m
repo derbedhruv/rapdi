@@ -24,9 +24,11 @@ triggerconfig(w2, 'manual');
 start(w2);
 
 v = VideoWriter('video.avi');
+v.FrameRate = 30;
+v.Quality = 100;
 open(v);
 
-while(1)
+for i = 1:100
    % loop to collect images, process them and then display them 
    im1 = getsnapshot(w1);
    im2 = getsnapshot(w2);
@@ -34,11 +36,11 @@ while(1)
    imm = horzcat(im1, im2);
    writeVideo(v, imm);
    
-   im1 = process_pupil(im1, 1, 100,threshold_dark, threshold_bright);
-   im2 = process_pupil(im2, 1, 100,threshold_dark, threshold_bright);
+   % im1 = process_pupil(im1, 1, 100,threshold_dark, threshold_bright);
+   % im2 = process_pupil(im2, 1, 100,threshold_dark, threshold_bright);
       
-   imshow([im1, im2], 'InitialMagnification', 67);
+   imshow(imm);
 end
 
 % close the connection to the object
-stop('w1'); stop('w2'); close(v);
+stop(w1); stop(w2); close(v);
