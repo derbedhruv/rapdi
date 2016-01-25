@@ -98,9 +98,6 @@ end
 % Configure vidObj1 properties.
 set(vidObj1, 'FramesPerTrigger', 1);
 
-% Configure vidObj1 triggering.
-triggerconfig(vidObj1, 'manual', 'none', 'none');
-
 % Configure vidObj1's video source properties.
 srcObj1 = get(vidObj1, 'Source');
 

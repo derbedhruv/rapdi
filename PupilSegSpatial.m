@@ -3,12 +3,12 @@
 
 % the only variable you need to change
 threshold_dark = 0.8;
-threshold_bright = 0.87;
+threshold_bright = 0.92;
 
 disp('reading videos..');
 
-vd1 = VideoReader('E:\RAPDeye\RAPD detected\Abdul_rehman_48_male_left.avi');
-vd2 = VideoReader('E:\RAPDeye\RAPD detected\Abdul_rehman_48_male_right.avi');
+vd1 = VideoReader('E:\RAPDeye\RAPD detected\Manju_prakash_raspayala_45_right.avi');
+vd2 = VideoReader('E:\RAPDeye\RAPD detected\Manju_prakash_raspayala_45_left.avi');
 
 % frame_rate = vd.FrameRate;
 
@@ -30,10 +30,10 @@ figure; hold on
 disp('thank you, now processing frames..');
 for f = 1:frames  
     frame_l = video_l(:,:,:,f);
-    Im_l = process_pupil(frame_l, 10, 180,threshold_dark, threshold_bright);
+    Im_l = process_pupil(frame_l, 1, 180,threshold_dark, threshold_bright);
     
     frame_r = video_r(:,:,:,f);
-    Im_r = process_pupil(frame_r, 10, 180,threshold_dark, threshold_bright);
+    Im_r = process_pupil(frame_r, 1, 180,threshold_dark, threshold_bright);
     
     imshow([Im_r, Im_l]);
 end
