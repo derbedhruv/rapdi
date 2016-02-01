@@ -22,7 +22,7 @@ function varargout = rapdi_gui(varargin)
 
 % Edit the above text to modify the response to help rapdi_gui
 
-% Last Modified by GUIDE v2.5 25-Jan-2016 13:30:29
+% Last Modified by GUIDE v2.5 25-Jan-2016 15:16:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -204,4 +204,3 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 % --- If Enable == 'on', executes on mouse press in 5 pixel border.
 % --- Otherwise, executes on mouse press in 5 pixel border or over pushbutton1.
-
