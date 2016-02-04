@@ -103,8 +103,25 @@ assignin('base', 'od', od);
 
 %% close the ui
 close;
-
-
+%% Prepare the XLS file
+% Write patient details to a file, name the file
+% First we read it and see how many rows are written...
+existing_worksheet_data = 0;
+if (exist(strcat(date, '.xls'), 'file'))
+    % if the excel sheet exists, then read it in
+    disp('exists')
+    [~, ~, existing_worksheet_data] = xlsread(strcat(date, '.xls'));
+    existing_worksheet_data = size(existing_worksheet_data, 1)
+end
+if (existing_worksheet_data == 0)  % i.e. no rows are filled
+    disp('empty')
+    xlswrite(strcat(date, '.xls'), [{'First Name'} {'Last Name'} {'Age'} {'Gender'} {'Notes'} {'MR Number'} {'OS'} {'OD'}], 'Sheet1', 'A1');
+    existing_worksheet_data = existing_worksheet_data + 1;    % so that the next thing written will be after the present row
+end
+% write the excel file with the user's data
+patient_data = [{first_name} {last_name} {age} gender(1) {rapd_notes} mr_no os od];
+strcat('A', num2str(existing_worksheet_data + 1))
+xlswrite(strcat(date, '.xls'), patient_data, 'Sheet1', strcat('A', num2str(existing_worksheet_data) + 1));
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)

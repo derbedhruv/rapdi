@@ -1,4 +1,4 @@
-
+clear all;
 % Show the preview of the cameras in a custom GUI
 % Also save the timestamps of both.
 % Also save the live video stream at the end
