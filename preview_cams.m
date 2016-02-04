@@ -1,3 +1,4 @@
+
 % Show the preview of the cameras in a custom GUI
 % Also save the timestamps of both.
 % Also save the live video stream at the end
@@ -7,8 +8,8 @@ global arduino;
 record = 0;     % false
 
 %% First get inputs from the examiner
-% h = rapdi_gui;
-% uiwait(h); 
+h = rapdi_gui;
+uiwait(h); 
 
 %% Create the video object
 video_filename = strcat(mr_no, '_left.avi');
@@ -66,3 +67,4 @@ preview(w1, h2); preview(w2, h1);           % display the images as subplots
 
 start_button = uicontrol(f,'Style','pushbutton','String','START', 'Position',[50 20 60 40], 'Callback', {@do_record, '1'});
 stop_button = uicontrol(f,'Style','pushbutton','String','STOP', 'Position',[450 20 60 40], 'Callback', {@do_record, '0'});
+another_button = uicontrol(f,'Style','pushbutton','String','NEW PATIENT', 'Position',[230 20 100 40], 'Callback', @rapdi_gui);

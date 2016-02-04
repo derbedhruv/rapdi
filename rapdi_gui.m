@@ -102,7 +102,7 @@ assignin('base', 'os', os);
 assignin('base', 'od', od);
 
 %% close the ui
-close all;
+close;
 
 
 
