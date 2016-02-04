@@ -74,6 +74,10 @@ varargout{1} = handles.output;
 
 % --- Executes on button press in pushbutton1.
 function pushbutton1_Callback(hObject, eventdata, handles)
+global v_left;
+global v_right;
+global h1;
+global h2;
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
@@ -109,7 +113,6 @@ close;
 existing_worksheet_data = 0;
 if (exist(strcat(date, '.xls'), 'file'))
     % if the excel sheet exists, then read it in
-    disp('exists')
     [~, ~, existing_worksheet_data] = xlsread(strcat(date, '.xls'));
     existing_worksheet_data = size(existing_worksheet_data, 1)
 end
@@ -122,6 +125,24 @@ end
 patient_data = [{first_name} {last_name} {age} gender(1) {rapd_notes} mr_no os od];
 strcat('A', num2str(existing_worksheet_data + 1))
 xlswrite(strcat(date, '.xls'), patient_data, 'Sheet1', strcat('A', num2str(existing_worksheet_data) + 1));
+
+%% Create the video object
+video_filename = strcat(mr_no, '_left.avi');
+close(v_left);
+v_left = VideoWriter(video_filename);
+v_left.FrameRate = 30;
+v_left.Quality = 100;
+
+video_filename = strcat(mr_no, '_right.avi');
+close(v_right);
+v_right = VideoWriter(video_filename);
+v_right.FrameRate = 30;
+v_right.Quality = 100;
+
+% Set the update function for preview.. pass arguments
+setappdata(h1, 'UpdatePreviewWindowFcn', @(obj, evt, h1)process_videos_func(obj, evt, h1, v_left));
+setappdata(h2, 'UpdatePreviewWindowFcn', @(obj, evt, h2)process_videos_func(obj, evt, h2, v_right));
+
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
