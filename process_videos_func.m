@@ -9,7 +9,8 @@ function process_videos_func(obj, event, himage, videoObj)
     threshold_dark = 0.8;
     threshold_bright = 0.87;
 
-    % you can get the time-stamp string associated with this image from:
+    % TODO: save timestamps in a separate file
+    % TODO: Save extracted pupil diameter with these timestamps
     tstampstr = event.Timestamp;
 
     % you get the image in this function from:

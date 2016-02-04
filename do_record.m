@@ -4,4 +4,10 @@ function do_record(~, ~, val)
 % called every time the preview window updates. THis will tell it to start
 % and stop the test.
 global record;
+global arduino;
+
 record = str2num(val);
+if (val == '1')
+   % Send signal to arduino
+   fprintf(arduino, 's');
+end
