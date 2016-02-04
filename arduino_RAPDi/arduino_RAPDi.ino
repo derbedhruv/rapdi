@@ -52,7 +52,7 @@ void loop() {
     } else if (inChar == 'x') {
       // stop immedietely
       turnThemOff();
-      counter = 10;  // this is out of bounds, hence put everything OFF
+      counter = 10;  // We know we sent this kill signal, hence no need to print 'o', hence no need to set counter = 9
     }
   }
   
