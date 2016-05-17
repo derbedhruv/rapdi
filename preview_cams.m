@@ -18,8 +18,8 @@ ports_list = ports.AvailableSerialPorts;
 
 for i = 1:size(ports_list, 1)
     if ~strcmp(ports_list(i), 'COM1')
-        arduino_port = ports_list(2)    % TODO: establish comm to prove it is the arduino
-        break
+        arduino_port = ports_list(i)    % TODO: establish comm to prove it is the arduino
+        break        
     end
 end
 
